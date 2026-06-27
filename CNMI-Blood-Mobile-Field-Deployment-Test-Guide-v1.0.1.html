@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>คู่มือทดสอบระบบก่อนออกหน่วย — CNMI Blood Mobile</title>
+<style>
+:root{--blue:#185abc;--soft:#eaf4ff;--border:#b8dafc;--text:#18324a;--muted:#5f6f7f;--danger:#b42318;--ok:#067647}
+*{box-sizing:border-box} body{font-family:Sarabun,"Noto Sans Thai",Tahoma,sans-serif;margin:0;background:#f4f8fc;color:var(--text);line-height:1.65}
+header{background:linear-gradient(135deg,#245176,#2f80ed);color:#fff;padding:28px 20px}.wrap{max-width:1000px;margin:auto}.card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:22px;margin:18px 0;box-shadow:0 8px 24px rgba(24,90,188,.08)}
+h1{font-size:28px;margin:0 0 6px} h2{color:var(--blue);font-size:22px;border-bottom:2px solid var(--soft);padding-bottom:8px} h3{font-size:18px;margin-top:22px}.muted{color:var(--muted)}
+.notice{background:#fff8e7;border-left:5px solid #f4b400;padding:14px 16px;border-radius:10px}.danger{background:#fff1f0;border-left:5px solid var(--danger);padding:14px 16px;border-radius:10px}.ok{background:#ecfdf3;border-left:5px solid var(--ok);padding:14px 16px;border-radius:10px}
+code{background:#edf2f7;padding:2px 6px;border-radius:6px} li{margin:7px 0}.check{list-style:none;padding-left:0}.check li:before{content:"☐";font-size:19px;margin-right:9px;color:var(--blue)}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{border:1px solid #cbd8e6;padding:9px;text-align:left;vertical-align:top}th{background:var(--soft)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.btn{display:inline-block;padding:10px 14px;border-radius:10px;background:var(--blue);color:white;text-decoration:none;border:0;font-weight:700;cursor:pointer}.btn.secondary{background:#fff;color:var(--blue);border:1px solid var(--blue)}
+@media print{body{background:#fff}.card{box-shadow:none;break-inside:avoid}.actions{display:none}header{background:#fff;color:#000;border-bottom:2px solid #000;padding:12px 0}.wrap{max-width:none}a{color:#000;text-decoration:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><h1>คู่มือทดสอบระบบก่อนออกหน่วยภายนอก</h1><div>CNMI Blood Mobile — Offline Secure v1.0.1</div></div></header>
+<main class="wrap">
+<div class="card notice"><strong>เป้าหมาย:</strong> ยืนยันว่า Notebook เปิดแอป Offline ได้ อ่านบัตร บันทึก คัดกรอง พิมพ์ Barcode และส่งออกข้อมูลได้จริงก่อนเริ่มรับผู้บริจาค</div>
+<div class="card">
+<h2>เกณฑ์พร้อมใช้งาน</h2>
+<ul class="check"><li>เปิดแอปได้หลังปิด Wi-Fi และ Restart Windows</li><li>Login และเปิดคลังข้อมูลได้</li><li>ตั้งชื่องานและช่วงเลขถุงถูกต้อง</li><li>uTrust 2700R อ่านบัตรได้</li><li>Import และค้นหาประวัติได้</li><li>บันทึก คัดกรอง และจ่ายเลขถุงไม่ซ้ำ</li><li>พิมพ์ A4/Sticker และ Scan Barcode ได้</li><li>Export LIS CSV และ Backup ได้</li><li>มี Notebook หรือแบบฟอร์มสำรอง</li></ul>
+<div class="danger"><strong>NO-GO:</strong> ห้ามเริ่มด้วยระบบนี้เมื่อ Offline เปิดไม่ได้, Login ไม่ได้, เลขถุงไม่ชัดเจน/เสี่ยงซ้ำ หรือไม่มีแผนเก็บข้อมูลสำรอง</div>
+</div>
+<div class="card"><h2>ก่อนออกหน่วยอย่างน้อย 1 วัน</h2>
+<h3>1) เตรียม Browser</h3><ol><li>ใช้ Windows User และ Browser เดิมที่จะนำไปใช้งานจริง</li><li>เปิด <code>https://mobile.cnmiblood.com</code> ขณะออนไลน์</li><li>รอหน้าแอปครบ แล้ว Refresh 1 ครั้ง</li><li>ห้ามใช้ Incognito/InPrivate และห้ามล้าง Site Data</li></ol>
+<h3>2) ทดสอบบัญชีและเลขถุง</h3><ol><li>Logout แล้ว Login ใหม่</li><li>เมนู <strong>เตรียมออกหน่วย / ส่งออก LIS</strong></li><li>กรอกชื่องาน เลขถุงเริ่มต้น–สิ้นสุด และให้เจ้าหน้าที่อีกคนตรวจทาน</li></ol>
+<h3>3) Import ประวัติ</h3><ol><li>เลือก Excel/CSV แล้วกดนำเข้า</li><li>จดจำนวนรายการสำเร็จ/ข้าม</li><li>ค้นหาตัวอย่างอย่างน้อย 3 รายและเทียบข้อมูลต้นทาง</li></ol>
+<h3>4) ทดสอบ Smart Card</h3><ol><li>เสียบ uTrust 2700R</li><li>ดับเบิลคลิก <code>smartcard-bridge/Start-Bridge.cmd</code></li><li>ต้องเห็น URL <code>http://127.0.0.1:17345</code></li><li>ในแอปกดตรวจสอบเครื่องอ่านบัตร</li><li>ทดสอบอ่านบัตรอย่างน้อย 3 ใบก่อนออกหน่วย และสะสม 10 ใบก่อนประกาศใช้จริง</li></ol>
+<h3>5) ทดสอบข้อมูลจำลอง</h3><ol><li>ใช้เลขจำลอง เช่น <code>9999999999991</code></li><li>บันทึกผู้บริจาคจำลอง 2 ราย</li><li>ลงผลผ่านและไม่ผ่าน</li><li>ตรวจเลขถุงเพิ่มต่อเนื่อง ไม่ซ้ำ และอยู่ในช่วง</li></ol>
+<h3>6) ทดสอบพิมพ์</h3><ol><li>พิมพ์ A4 และตรวจข้อมูลไม่ตกขอบ</li><li>TSC TE310: 300 dpi, Scale 100%, Margins None, ปิด Fit to page</li><li>พิมพ์ Sticker 3 ดวงและ Scan ทุก Barcode</li></ol>
+<h3>7) ทดสอบ Export</h3><ol><li>ส่งออก LIS CSV และตรวจจำนวนแถว</li><li>ส่งออก Backup เข้ารหัส และตรวจไฟล์ไม่เป็น 0 KB</li><li>ทดสอบ LIS Assistant ด้วยข้อมูลจำลองก่อนใช้กับ LIS จริง</li></ol>
+</div>
+<div class="card"><h2>ทดสอบ Offline แบบจริง</h2><ol><li>ปิด Wi-Fi และถอด LAN</li><li>ปิด Browser ทุกหน้าต่าง</li><li>เปิดใหม่แล้วเข้าแอป</li><li>Login บันทึกข้อมูลจำลอง และปิด–เปิดอีกครั้ง</li><li>Restart Windows โดยยังไม่เปิด Wi-Fi</li><li>เปิดแอป ตรวจข้อมูล เปิด Bridge อ่านบัตร และทดลองพิมพ์</li></ol><div class="ok"><strong>ผ่านเมื่อ:</strong> แอปเปิดและบันทึกได้หลัง Restart Windows โดยไม่มีอินเทอร์เน็ต</div></div>
+<div class="card"><h2>ตรวจหน้างานภายใน 10 นาที</h2><ul class="check"><li>วันที่และเวลา Windows ถูกต้อง</li><li>Login ได้ และแอปเปิด Offline ได้</li><li>ชื่องาน/ช่วงเลขถุงถูกต้อง</li><li>Bridge เปิดและ Reader พร้อม</li><li>อ่านบัตรทดสอบได้</li><li>บันทึก/คัดกรองข้อมูลจำลองได้</li><li>พิมพ์ A4 และ Sticker ได้</li><li>Scanner อ่าน Barcode ได้</li><li>Export CSV/Backup ได้</li><li>ล้างข้อมูลจำลองก่อนเริ่มงานจริง</li></ul></div>
+<div class="card"><h2>กรณีต้องเปลี่ยน Notebook</h2><div class="notice">Backup รุ่นนี้ยังไม่มีปุ่ม Restore เข้าเครื่องอื่นโดยตรง จึงต้องเตรียม Notebook สำรองล่วงหน้า</div><ol><li>ติดตั้งและทดสอบ Offline บนเครื่องสำรองก่อนเดินทาง</li><li>นำเข้าประวัติชุดเดียวกัน</li><li>กำหนดช่วงเลขถุงสำรองไม่ให้ทับเครื่องหลัก</li><li>ทดสอบ Reader และ Printer</li><li>เมื่อเครื่องหลักเสีย ให้หยุดรับรายการ บันทึกเลขสุดท้าย และ Export จากเครื่องหลักหากทำได้</li><li>หัวหน้าหน่วยอนุมัติเลขเริ่มต้นของเครื่องสำรอง</li><li>ห้ามสองเครื่องจ่ายเลขช่วงเดียวกันพร้อมกัน</li></ol></div>
+<div class="card"><h2>หลังจบงาน</h2><ol><li>กระทบยอดผู้ลงทะเบียน ใบสมัคร และถุง</li><li>Export LIS CSV และ Backup เข้ารหัส</li><li>นำเข้า LIS และตรวจทานครบก่อน</li><li>กดล้างข้อมูลภารกิจ แล้วพิมพ์ <code>CLEAR</code></li><li>ปิด Bridge และบันทึกปัญหา</li></ol></div>
+<div class="card"><h2>แบบสรุปผล</h2><table><tr><th>รายการ</th><th>ผล</th><th>หมายเหตุ</th></tr><tr><td>Offline หลัง Restart</td><td>ผ่าน / ไม่ผ่าน</td><td></td></tr><tr><td>Smart Card</td><td>ผ่าน / ไม่ผ่าน</td><td></td></tr><tr><td>เลขถุง</td><td>ผ่าน / ไม่ผ่าน</td><td></td></tr><tr><td>A4/Sticker/Barcode</td><td>ผ่าน / ไม่ผ่าน</td><td></td></tr><tr><td>CSV/Backup</td><td>ผ่าน / ไม่ผ่าน</td><td></td></tr><tr><td>แผนสำรอง</td><td>ผ่าน / ไม่ผ่าน</td><td></td></tr></table><p><strong>สรุป:</strong> GO / CONDITIONAL GO / NO-GO</p><p>ผู้ทดสอบ __________________ ผู้ตรวจทาน __________________ ผู้อนุมัติ __________________</p><div class="actions"><button class="btn" onclick="window.print()">พิมพ์คู่มือ / บันทึก PDF</button><a class="btn secondary" href="../index.html">กลับหน้าแอป</a></div></div>
+</main>
+</body>
+</html>
